@@ -1,0 +1,9 @@
+name: Pig_Launcher
+version: '${project.version}'
+main: me.rominer_11.piglauncher.Piglauncher
+authors: [ rominer_11 ]
+description: pigs
+commands:
+  play:
+    description: Start the game
+    usage: "/<command> <border size>"
