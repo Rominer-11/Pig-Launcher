@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import static me.rominer_11.piglauncher.Piglauncher.inGame;
+
 public class Play implements CommandExecutor {
 
     @Override
@@ -51,6 +53,12 @@ public class Play implements CommandExecutor {
 
 
             for (Player player : Bukkit.getOnlinePlayers()) {
+                inGame.add(player);
+
+                player.setHealth(player.getMaxHealth());
+
+                player.getInventory().clear();
+
                 player.getInventory().addItem(gun);
                 player.getInventory().addItem(glass);
                 player.getInventory().addItem(pearls);
@@ -63,8 +71,8 @@ public class Play implements CommandExecutor {
                 player.setGameMode(GameMode.SURVIVAL);
 
                 ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-                Bukkit.getServer().dispatchCommand(console, "spreadplayers 0 0 " + (border - 25) + "" + (border - 25) + " true @a");
-                System.out.println("spreadplayers 0 0 " + (border - 25) + " " + (border - 25) + " true @a");
+                System.out.println("spreadplayers 0 0 " + (border / 4) + " " + (border / 2) + " true @a");
+                Bukkit.getServer().dispatchCommand(console, "spreadplayers 0 0 " + (border / 4) + " " + (border / 2) + " true @a");
                 Bukkit.getServer().dispatchCommand(console, "worldborder set " + border);
             }
 
